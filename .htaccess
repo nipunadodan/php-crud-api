@@ -1,0 +1,4 @@
+Options +FollowSymLinks -MultiViews
+RewriteEngine on
+RewriteRule ^(api)/([A-Za-z0-9-_]+)/?$ api.php?api=$2 [L,QSA]
+RewriteRule ^(api)/([A-Za-z0-9-_]+)/([A-Za-z0-9-_]+)/?$ api.php?api=$2&option=$3 [L,QSA]
