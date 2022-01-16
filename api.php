@@ -30,6 +30,7 @@ if (isset($_GET['api']) && $_GET['api'] !== '') {
         echo '404: File ' . $_GET['api'] . ' not found';
     }
 } else {
+    http_response_code(404);
     echo '404: Process not Found';
 }
 //echo 'hi api';

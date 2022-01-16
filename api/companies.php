@@ -1,6 +1,4 @@
 <?php
-//include_once ('modules/User.php');
-//include_once ('modules/Db.php');
 use Orange\Db;
 use Orange\User;
 
@@ -12,12 +10,23 @@ $database = new Db();
 switch ($_SERVER['REQUEST_METHOD']){
     case 'POST':
         $newUser = [
-            'firstname' => $_POST['firstName'],
-            'lastname' => $_POST['lastName'],
-            'username' => $_POST['username'],
-            'password' => $_POST['password'],
+            'title' => $input->title,
+            'description' => $input->description,
+            'author' => $input->author,
         ];
-        $user = $database->insert();
+        try{
+            $database->insert('posts', $newUser);
+            echo json_encode([
+                'status' => 'success',
+                'message' => 'Successfully added a new post'
+            ]);
+        }catch (PDOException $e){
+            echo json_encode([
+                'status' => 'danger',
+                'message' => 'Error in adding your post',
+                'error' => $e->getMessage()
+            ]);
+        }
         break;
     case 'GET':
         if(isset($_GET['option']) && $_GET['option'] > 0){

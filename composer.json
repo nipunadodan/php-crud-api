@@ -2,7 +2,9 @@
     "require": {
         "php": "^7.4",
         "catfan/medoo": "^2.1",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "ext-json": "*",
+        "respect/validation": "^2.2"
     },
     "autoload": {
         "psr-0": {"Orange\\": "modules"}
